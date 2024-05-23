@@ -12,8 +12,8 @@ function getComputerChoice(choice) {
 
 let getHumanChoice = () => prompt("Please enter a choice: ");
 
-    let humanScore = 0;
-    let computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     let upperHumanChoice = humanChoice.toUpperCase();
@@ -25,11 +25,6 @@ function playRound(humanChoice, computerChoice) {
     
     console.log(`Human chose: ${upperHumanChoice}`);
     console.log(`Computer chose: ${upperComputerChoice}`);
-
-    // let _ = upperHumanChoice === upperComputerChoice ?
-    //     console.log(`Draw! ${upperHumanChoice} is equal to ${upperComputerChoice}`) :
-    //     win = humanWinCondition ? console.log(`You win! ${upperHumanChoice} beats ${upperComputerChoice}`) : 
-    //     console.log(`You lose! ${upperComputerChoice} beats ${upperHumanChoice}`);
     
     if (upperHumanChoice === upperComputerChoice) {
         console.log(`Draw! ${upperHumanChoice} is equal to ${upperComputerChoice}`)
