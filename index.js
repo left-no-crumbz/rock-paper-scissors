@@ -12,32 +12,56 @@ function getComputerChoice(choice) {
 
 let getHumanChoice = () => prompt("Please enter a choice: ");
 
-let humanScore = 0;
-let computerScore = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     let upperHumanChoice = humanChoice.toUpperCase();
     let upperComputerChoice = computerChoice.toUpperCase();
     
-    let humanWin = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
+    let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
     upperHumanChoice === "SCISSORS" && upperComputerChoice === "PAPER" ||
     upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
     
     console.log(`Human chose: ${upperHumanChoice}`);
     console.log(`Computer chose: ${upperComputerChoice}`);
 
-    let result = upperHumanChoice === upperComputerChoice ?
-        console.log(`Draw! ${upperHumanChoice} is equal to ${upperComputerChoice}`) :
-        win = humanWin ? humanScore++ : computerScore++;
-        
+    // let _ = upperHumanChoice === upperComputerChoice ?
+    //     console.log(`Draw! ${upperHumanChoice} is equal to ${upperComputerChoice}`) :
+    //     win = humanWinCondition ? console.log(`You win! ${upperHumanChoice} beats ${upperComputerChoice}`) : 
+    //     console.log(`You lose! ${upperComputerChoice} beats ${upperHumanChoice}`);
     
+    if (upperHumanChoice === upperComputerChoice) {
+        console.log(`Draw! ${upperHumanChoice} is equal to ${upperComputerChoice}`)
+    } else {
+        if (humanWinCondition) {
+            console.log(`You win! ${upperHumanChoice} beats ${upperComputerChoice}`)
+            humanScore++;
+        } else {
+            console.log(`You lose! ${upperComputerChoice} beats ${upperHumanChoice}`);
+            computerScore++;
+        }
+    }
+    
+}
+
+function playGame() {
+
+    for (let i = 0; i < 5; i++){
+        
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice(generateChoice(1, 3));
+        playRound(humanChoice, computerChoice);
+        console.log("====================================================")
+    }
+    
+    console.log(`Human score: ${humanScore}`);
+    console.log(`Computer score: ${computerScore}`);
     if (humanScore > computerScore) {
-        console.log(`You win! ${upperHumanChoice} beats ${upperComputerChoice}`);
+        console.log(`You win!`);
     } else if (humanScore < computerScore){
-        console.log(`You lose! ${upperComputerChoice} beats ${upperHumanChoice}`);
+        console.log(`You lose!`);
     }
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice(generateChoice(1, 3));
-playRound(humanChoice, computerChoice);
+playGame();
