@@ -1,0 +1,29 @@
+
+
+:root {
+    --bg-start-gradient: hsl(214, 47%, 23%);
+    --bg-end-gradient: hsl(237, 49%, 15%);
+}
+
+* {
+    margin: 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    color: white;
+    background: radial-gradient(at top, var(--bg-start-gradient), var(--bg-end-gradient));
+    min-height: 100dvh;
+}
+
+
+.title {
+    display: flex;
+    border: 3px solid white;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
