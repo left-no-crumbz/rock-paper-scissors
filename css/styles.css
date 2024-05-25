@@ -3,6 +3,9 @@
 :root {
     --bg-start-gradient: hsl(214, 47%, 23%);
     --bg-end-gradient: hsl(237, 49%, 15%);
+    --header-outline: hsl(217, 16%, 45%);
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
 }
 
 * {
@@ -18,12 +21,30 @@ body {
     min-height: 100dvh;
 }
 
+.title-container {
+    display: flex;
+    margin: 30px;
+}
 
 .title {
+    margin: auto;
+    width: 600px;
+    padding: 20px 20px;
     display: flex;
-    border: 3px solid white;
-    border-radius: 30px;
-    justify-content: center;
+    border: 2px solid var(--header-outline);
+    border-radius: 20px;
+    justify-content: flex-start;
     align-items: center;
 }
 
+h1 {
+    line-height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 30px;
+    font-size: 2em;
+}
+
+.score {
+    background-color: white;
+}
