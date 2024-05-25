@@ -28,12 +28,12 @@ body {
 
 .title {
     margin: auto;
-    width: 600px;
+    width: 700px;
     padding: 20px 20px;
     display: flex;
     border: 2px solid var(--header-outline);
     border-radius: 20px;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -45,6 +45,8 @@ h1 {
     font-size: 2em;
 }
 
-.score {
+.score-container {
+    border-radius: 10px;
     background-color: white;
+    padding: 2em;
 }
