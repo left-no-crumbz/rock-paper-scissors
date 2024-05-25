@@ -21,32 +21,39 @@ body {
     min-height: 100dvh;
 }
 
-.title-container {
-    display: flex;
-    margin: 30px;
+.container{
+    padding: 1em;
+    margin: 0 auto;
 }
-
 .title {
     margin: auto;
-    width: 700px;
-    padding: 20px 20px;
+    max-width: 700px;
+    padding: 1rem;
     display: flex;
     border: 2px solid var(--header-outline);
-    border-radius: 20px;
+    border-radius: 1rem;
     justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: white;
+    padding: 1em 2.5em;
     align-items: center;
 }
 
-h1 {
-    line-height: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 30px;
-    font-size: 2em;
+#score-title {
+    font-weight: 600;
+    color: var(--score-text);
 }
 
-.score-container {
-    border-radius: 10px;
-    background-color: white;
-    padding: 2em;
+#score {
+    font-weight: 600;
+    font-size: 3em;
+    color: var(--dark-text);
 }
