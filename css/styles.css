@@ -80,11 +80,38 @@ body {
 }
 
 .rps-container {
+    /* height: 10rem; */
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: image("../images/bg-triangle.svg");
+    gap: 2rem;
 }
 
+button {
+    padding: 30px;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+#paper {
+    background: radial-gradient(at center, var(--paper-clr-start), var(--paper-clr-end));
+}
+
+#scissors {
+    background: radial-gradient(at center, var(--scissors-clr-start), var(--scissors-clr-end));
+}
+
+#rock {
+    background: radial-gradient(at center, var(--rock-clr-start), var(--rock-clr-end));
+}
 .game {
-    
+    width: 10rem;
+    height: 10rem;
+    padding: 50px;
+    border-radius: 50%;
+    background: white;
 }
