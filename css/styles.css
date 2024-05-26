@@ -4,6 +4,12 @@
     --header-outline: hsl(217, 16%, 45%);
     --dark-text: hsl(229, 25%, 31%);
     --score-text: hsl(229, 64%, 46%);
+    --scissors-clr-start: hsl(39, 89%, 49%);
+    --scissors-clr-end: hsl(40, 84%, 53%);
+    --paper-clr-start: hsl(230, 89%, 62%);
+    --paper-clr-end: hsl(230, 89%, 65%);
+    --rock-clr-start: hsl(349, 71%, 52%);
+    --rock-clr-end: hsl(349, 70%, 56%);
 }
 
 *, ::before, ::after {
@@ -75,4 +81,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.game {
+    
 }
