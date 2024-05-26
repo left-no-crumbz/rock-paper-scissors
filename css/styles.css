@@ -22,6 +22,10 @@ img {
     shape-margin: 0.75rem;
 }
 
+input, button {
+    font: inherit;
+}
+
 body {
     font-family: "Barlow Semi Condensed", sans-serif;
     color: white;
@@ -33,10 +37,11 @@ body {
     padding-top: 2rem;
     margin: 0 auto;
 }
-.title {
+.header {
     margin: auto;
     max-width: 700px;
-    padding: 1rem;
+    min-height: 150px;
+    padding: 1rem 1.4rem 1rem 2rem;
     display: flex;
     border: 2px solid var(--header-outline);
     border-radius: 1rem;
@@ -64,4 +69,10 @@ body {
     font-weight: 600;
     font-size: 3em;
     color: var(--dark-text);
+}
+
+.rps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
