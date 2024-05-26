@@ -38,6 +38,8 @@ body {
     background: radial-gradient(at top, var(--bg-start-gradient), var(--bg-end-gradient));
     min-height: 100dvh;
 }
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
 
 .container{
     padding-top: 2rem;
