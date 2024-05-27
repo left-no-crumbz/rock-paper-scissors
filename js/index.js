@@ -6,7 +6,6 @@ let getComputerChoice = () => {
     const MIN = 1;
     const choice = Math.floor(Math.random() * (MAX - MIN) + MIN);
 
-    console.log(choice);
 
     switch(choice) {
         case 1: return "Rock";
@@ -25,12 +24,13 @@ container.addEventListener("click", (event) => {
     const rock = document.querySelector("#rock");
     const text = document.querySelector(".text");
     const top = document.querySelector(".top");
-    function choose() {
-        const choice = getComputerChoice();
+    let score = document.querySelector("#score");
 
-        console.log(`Human chose: ${target.id}`);
-        console.log(`Computer chose: ${choice}`);
-    
+    console.log(score);
+    console.log(score.textContent);
+    // TODO: Implement game logic 
+
+    function choose(choice) {
         switch(choice){
             // disables the clone to prevent spawning children
             case "Paper":
@@ -60,8 +60,11 @@ container.addEventListener("click", (event) => {
             default:
                 // do nothing;
                 break;
+        
         }
     }
+
+    const choice = getComputerChoice();
     switch(target.id){
         // disables the element to prevent spawning children
         case "paper":
@@ -70,7 +73,7 @@ container.addEventListener("click", (event) => {
             scissors.style.display = "none";
             rock.style.display = "none";
             paper.disabled = true;
-            choose();
+            choose(choice);
             break;
         case "scissors":
             rpsContainer.style.backgroundImage = "none";
@@ -78,7 +81,7 @@ container.addEventListener("click", (event) => {
             paper.style.display = "none";
             rock.style.display = "none";
             scissors.disabled = true;
-            choose();
+            choose(choice);
             break;
         case "rock":
             // fixes the awkward space when rock is chosen
@@ -90,13 +93,24 @@ container.addEventListener("click", (event) => {
             paper.style.display = "none";
             scissors.style.display = "none";
             rock.disabled = true;
-            choose();
+            choose(choice);
             break;
         default:
             // do nothing
             break;
     }
+    const upperHumanChoice = String(target.id).toLocaleUpperCase();
+    const upperComputerChoice = String(choice).toLocaleUpperCase();
+    let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
+    upperHumanChoice === "SCISSORS" && upperComputerChoice === "PAPER" ||
+    upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
 
+    let ctr = 0;
+    if(humanWinCondition) {
+        console.log(ctr);
+        ++ctr;
+        score.textContent = `${ctr}`;
+    }
 
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
