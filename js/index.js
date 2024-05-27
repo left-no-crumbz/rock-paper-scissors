@@ -28,11 +28,10 @@ container.addEventListener("click", (event) => {
     // const top = document.querySelector(".top");
     const user = document.querySelector(".user");
     const computer = document.querySelector(".computer");
-
-    function choose(choice) {
+    const resultDiv = document.querySelector(".result");
+    function computerChoose(choice) {
         userText.style.display = "flex";
         compText.style.display = "flex";
-
         let computerChoice;
         switch(choice){
             // disables the clone to prevent spawning children
@@ -54,77 +53,41 @@ container.addEventListener("click", (event) => {
             computerChoice.disabled = true;
         }
     }
-    const choice = getComputerChoice();
     
-    let userChoice;
-    switch(target.id){
-        // disables the element to prevent spawning children
-        case "paper":
-            rpsContainer.style.display = "none";
-            // rpsContainer.style.backgroundImage = "none";
-            // text.style.display = "flex";
-            // scissors.style.display = "none";
-            // rock.style.display = "none";
-            userChoice = paper.cloneNode(true);
-
-            // paper.disabled = true;
-            choose(choice);
-            decideWinner();
-            break;
-        case "scissors":
-            rpsContainer.style.display = "none";
-
-            // rpsContainer.style.backgroundImage = "none";
-            // text.style.display = "flex";
-            // paper.style.display = "none";
-            // rock.style.display = "none";
-            // scissors.disabled = true;
-            userChoice = scissors.cloneNode(true);
-            choose(choice);
-            decideWinner();
-            break;
-        case "rock":
-            // fixes the awkward space when rock is chosen
-            // this is because I grouped paper and scissors together
-            // top.style.display = "none";
-            rpsContainer.style.display = "none";
-            // rpsContainer.style.backgroundImage = "none";
-            // text.style.display = "flex";
-            // paper.style.display = "none";
-            // scissors.style.display = "none";
-            // rock.disabled = true;
-            userChoice = rock.cloneNode(true);
-            choose(choice);
-            decideWinner();
-            break;
-        default:
-            // do nothing
-            break;
+    function userChoose(choice){
+        let userChoice;
+        switch(target.id){
+            case "paper":
+                rpsContainer.style.display = "none";
+                userChoice = paper.cloneNode(true);
+                computerChoose(choice);
+                decideWinner();
+                break;
+            case "scissors":
+                rpsContainer.style.display = "none";
+                userChoice = scissors.cloneNode(true);
+                computerChoose(choice);
+                decideWinner();
+                break;
+            case "rock":
+                rpsContainer.style.display = "none";
+                userChoice = rock.cloneNode(true);
+                computerChoose(choice);
+                decideWinner();
+                break;
+                default:
+                    // do nothing
+                break;
+        }
+        if(userChoice){
+            user.appendChild(userChoice);
+            // disables the element to prevent spawning children
+            userChoice.disabled = true;
+        }
     }
-
-    if(userChoice){
-        user.appendChild(userChoice);
-        userChoice.disabled = true;
-    }
-
     function decideWinner(){
-        const resultDiv = document.createElement("div");
-        const resultParagraph = document.createElement("p");
-        const playAgain = document.createElement("button");
-    
-        resultDiv.appendChild(resultParagraph);
-        resultDiv.append(playAgain);
-        
-        resultParagraph.style.fontSize = "3rem";
-        resultParagraph.style.fontWeight = "700";
-    
-        playAgain.style.padding = "2rem 4rem";
-        playAgain.textContent = "PLAY AGAIN";
-        playAgain.style.fontSize = "1rem";
-        playAgain.style.backgroundColor = "white";
-        playAgain.style.color = "var(--dark-text)";
-
-
+        resultDiv.style.display = "flex";
+        const resultText = document.querySelector("#result-text");
         const upperHumanChoice = String(target.id).toLocaleUpperCase();
         const upperComputerChoice = String(choice).toLocaleUpperCase();
         let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
@@ -132,17 +95,21 @@ container.addEventListener("click", (event) => {
         upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
     
         let ctr = 0;
-        if(humanWinCondition) {
+        if(upperHumanChoice === upperComputerChoice) {
+            resultText.textContent = "DRAW";        
+        } else if (humanWinCondition){
             console.log(ctr);
             ++ctr;
             score.textContent = `${ctr}`;
-            resultParagraph.textContent = "YOU WIN";        
+            resultText.textContent = "YOU WIN";        
         } else {
-            resultParagraph.textContent = "YOU LOSE";        
+            resultText.textContent = "YOU LOSE";        
         }
         
-        container.insertBefore(resultDiv, container.lastChild);
     }
+    const choice = getComputerChoice();
+    userChoose(choice);
+    // decideWinner();
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 
