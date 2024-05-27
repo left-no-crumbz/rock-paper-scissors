@@ -149,16 +149,26 @@ body {
     border-radius: 50%;
 }
 
-.results-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
+.results-container,
 .user,
 .computer {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+}
+
+.results-container {
+    margin-top: 4rem;
+    gap: 10rem;
+}
+.user,
+.computer {
+    flex-direction: column;
+}
+
+.result {
+    display: none;
+    flex-direction: column;
 }
