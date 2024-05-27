@@ -32,26 +32,30 @@ container.addEventListener("click", (event) => {
         console.log(`Computer chose: ${choice}`);
     
         switch(choice){
+            // disables the clone to prevent spawning children
             case "Paper":
                 const paperClone = paper.cloneNode(true);
                 paperClone.style.display = "flex";
                 container.appendChild(paperClone);
                 container.style.flexDirection = "row";
-                container.style.gap = "10rem";
+                container.style.gap = "12rem";
+                paperClone.disabled = true;
                 break;
             case "Scissors":
                 const scissorsClone = scissors.cloneNode(true);
                 scissorsClone.style.display = "flex";
                 container.appendChild(scissorsClone);
                 container.style.flexDirection = "row";
-                container.style.gap = "10rem";
+                container.style.gap = "12rem";
+                scissorsClone.disabled = true;
                 break;
             case "Rock":
                 const rockClone = rock.cloneNode(true);
                 rockClone.style.display = "flex";
                 container.appendChild(rockClone);
                 container.style.flexDirection = "row";
-                container.style.gap = "10rem";
+                container.style.gap = "12rem";
+                rockClone.disabled = true;
                 break;
             default:
                 // do nothing;
@@ -59,11 +63,13 @@ container.addEventListener("click", (event) => {
         }
     }
     switch(target.id){
+        // disables the element to prevent spawning children
         case "paper":
             rpsContainer.style.backgroundImage = "none";
             text.style.display = "flex";
             scissors.style.display = "none";
             rock.style.display = "none";
+            paper.disabled = true;
             choose();
             break;
         case "scissors":
@@ -71,6 +77,7 @@ container.addEventListener("click", (event) => {
             text.style.display = "flex";
             paper.style.display = "none";
             rock.style.display = "none";
+            scissors.disabled = true;
             choose();
             break;
         case "rock":
@@ -82,6 +89,7 @@ container.addEventListener("click", (event) => {
             text.style.display = "flex";
             paper.style.display = "none";
             scissors.style.display = "none";
+            rock.disabled = true;
             choose();
             break;
         default:
