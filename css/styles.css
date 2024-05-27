@@ -92,8 +92,9 @@ body {
     background-position: center;
 }
 
-.text {
-    display: flex;
+.user-text,
+.computer-text {
+    /* display: flex; */
     display: none;
     justify-content: space-around;
     gap: 38.5rem;
@@ -146,4 +147,18 @@ body {
     max-height: 10rem;
     padding: 50px;
     border-radius: 50%;
+}
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user,
+.computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
