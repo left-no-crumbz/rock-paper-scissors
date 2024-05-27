@@ -1,15 +1,25 @@
 // console.log("Hello World!");
 
-// let generateChoice = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
-// function getComputerChoice(choice) {
-//     switch(choice) {
-//         case 1: return "Rock";
-//         case 2: return "Paper";
-//         case 3: return "Scissors";
-//     }
-// }
+let getComputerChoice = () => {
+    const choice = Math.floor(Math.random() * (max - min) + min);
+    switch(choice) {
+        case 1: return "Rock";
+        case 2: return "Paper";
+        case 3: return "Scissors";
+    }
+};
 
+let container = document.querySelector(".rps-container");
+container.addEventListener("click", (event) => {
+    let target = event.target;
+
+    switch(target.id){
+        case "paper":
+            alert(`Paper was clicked`);
+            break;
+        }
+});
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 
 // let humanScore = 0;
