@@ -12,10 +12,38 @@ let getComputerChoice = () => {
 
 let container = document.querySelector(".rps-container");
 container.addEventListener("click", (event) => {
-    let target = event.target;
+    const target = event.target;
 
     alert(`${String(target.id).toUpperCase()} was clicked`);
+    
+    const body = document.querySelector("body");
 
+    // hide the container;
+    container.style.display = "none";
+
+    const resultDiv = document.createElement("div");
+    const userStr = document.createElement("p");
+    
+    
+    userStr.textContent = "YOU CHOSE"
+    resultDiv.appendChild(userStr);
+
+
+    switch(target.id){
+        case "paper":
+            let paper = document.querySelector("#paper");
+            resultDiv.appendChild(paper);
+            break;
+        case "scissors":
+            let scissors = document.querySelector("#scissors");
+            resultDiv.appendChild(scissors);
+            break;
+        case "rock":
+            let rock = document.querySelector("#rock");
+            resultDiv.appendChild(rock);
+            break;
+    }
+    body.appendChild(resultDiv);
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 

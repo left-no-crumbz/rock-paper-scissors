@@ -100,11 +100,9 @@ button {
 #paper {
     background: radial-gradient(at center, var(--paper-clr-start), var(--paper-clr-end));
 }
-
 #scissors {
     background: radial-gradient(at center, var(--scissors-clr-start), var(--scissors-clr-end));
 }
-
 #rock {
     background: radial-gradient(at center, var(--rock-clr-start), var(--rock-clr-end));
 }
