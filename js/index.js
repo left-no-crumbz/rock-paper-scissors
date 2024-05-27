@@ -22,80 +22,89 @@ container.addEventListener("click", (event) => {
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
     const rock = document.querySelector("#rock");
-    const text = document.querySelector(".text");
-    const top = document.querySelector(".top");
     const score = document.querySelector("#score");
+    const userText = document.querySelector(".user-text");
+    const compText = document.querySelector(".computer-text");
+    // const top = document.querySelector(".top");
+    const user = document.querySelector(".user");
+    const computer = document.querySelector(".computer");
 
     function choose(choice) {
+        userText.style.display = "flex";
+        compText.style.display = "flex";
+
+        let computerChoice;
         switch(choice){
             // disables the clone to prevent spawning children
             case "Paper":
-                const paperClone = paper.cloneNode(true);
-                paperClone.style.display = "flex";
-                container.appendChild(paperClone);
-                container.style.flexDirection = "row";
-                container.style.gap = "12rem";
-                paperClone.disabled = true;
+                computerChoice = paper.cloneNode(true);
                 break;
-            case "Scissors":
-                const scissorsClone = scissors.cloneNode(true);
-                scissorsClone.style.display = "flex";
-                container.appendChild(scissorsClone);
-                container.style.flexDirection = "row";
-                container.style.gap = "12rem";
-                scissorsClone.disabled = true;
+                case "Scissors":
+                computerChoice = scissors.cloneNode(true);
                 break;
             case "Rock":
-                const rockClone = rock.cloneNode(true);
-                rockClone.style.display = "flex";
-                container.appendChild(rockClone);
-                container.style.flexDirection = "row";
-                container.style.gap = "12rem";
-                rockClone.disabled = true;
+                computerChoice = rock.cloneNode(true);
                 break;
             default:
                 // do nothing;
                 break;
-        
+            }
+        if (computerChoice){
+            computer.appendChild(computerChoice);
+            computerChoice.disabled = true;
         }
     }
     const choice = getComputerChoice();
+    
+    let userChoice;
     switch(target.id){
         // disables the element to prevent spawning children
         case "paper":
-            rpsContainer.style.backgroundImage = "none";
-            text.style.display = "flex";
-            scissors.style.display = "none";
-            rock.style.display = "none";
-            paper.disabled = true;
+            rpsContainer.style.display = "none";
+            // rpsContainer.style.backgroundImage = "none";
+            // text.style.display = "flex";
+            // scissors.style.display = "none";
+            // rock.style.display = "none";
+            userChoice = paper.cloneNode(true);
+
+            // paper.disabled = true;
             choose(choice);
             decideWinner();
             break;
         case "scissors":
-            rpsContainer.style.backgroundImage = "none";
-            text.style.display = "flex";
-            paper.style.display = "none";
-            rock.style.display = "none";
-            scissors.disabled = true;
+            rpsContainer.style.display = "none";
+
+            // rpsContainer.style.backgroundImage = "none";
+            // text.style.display = "flex";
+            // paper.style.display = "none";
+            // rock.style.display = "none";
+            // scissors.disabled = true;
+            userChoice = scissors.cloneNode(true);
             choose(choice);
             decideWinner();
             break;
         case "rock":
             // fixes the awkward space when rock is chosen
             // this is because I grouped paper and scissors together
-            top.style.display = "none";
-
-            rpsContainer.style.backgroundImage = "none";
-            text.style.display = "flex";
-            paper.style.display = "none";
-            scissors.style.display = "none";
-            rock.disabled = true;
+            // top.style.display = "none";
+            rpsContainer.style.display = "none";
+            // rpsContainer.style.backgroundImage = "none";
+            // text.style.display = "flex";
+            // paper.style.display = "none";
+            // scissors.style.display = "none";
+            // rock.disabled = true;
+            userChoice = rock.cloneNode(true);
             choose(choice);
             decideWinner();
             break;
         default:
             // do nothing
             break;
+    }
+
+    if(userChoice){
+        user.appendChild(userChoice);
+        userChoice.disabled = true;
     }
 
     function decideWinner(){
@@ -110,7 +119,12 @@ container.addEventListener("click", (event) => {
         resultParagraph.style.fontWeight = "700";
     
         playAgain.style.padding = "2rem 4rem";
+        playAgain.textContent = "PLAY AGAIN";
+        playAgain.style.fontSize = "1rem";
         playAgain.style.backgroundColor = "white";
+        playAgain.style.color = "var(--dark-text)";
+
+
         const upperHumanChoice = String(target.id).toLocaleUpperCase();
         const upperComputerChoice = String(choice).toLocaleUpperCase();
         let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
