@@ -86,8 +86,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: image("../images/bg-triangle.svg");
     gap: 5rem;
+    background-image: url("../images/bg-triangle.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .text {
