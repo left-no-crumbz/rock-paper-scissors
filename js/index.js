@@ -2,7 +2,12 @@
 
 
 let getComputerChoice = () => {
-    const choice = Math.floor(Math.random() * (max - min) + min);
+    const MAX = 4;
+    const MIN = 1;
+    const choice = Math.floor(Math.random() * (MAX - MIN) + MIN);
+
+    console.log(choice);
+
     switch(choice) {
         case 1: return "Rock";
         case 2: return "Paper";
@@ -41,9 +46,36 @@ container.addEventListener("click", (event) => {
             paper.style.display = "none";
             scissors.style.display = "none";
             break;
+        default:
+            // do nothing
+            break;
     }
-    body.appendChild(strDiv);
-    body.appendChild(resultDiv);
+    const choice = getComputerChoice();
+
+    console.log(`Human chose: ${target.id}`);
+    console.log(`Computer chose: ${choice}`);
+
+    switch(choice){
+        case "Paper":
+            const paperClone = paper.cloneNode(true);
+            paperClone.style.display = "block";
+            container.appendChild(paperClone);
+            break;
+        case "Scissors":
+            const scissorsClone = scissors.cloneNode(true);
+            scissorsClone.style.display = "block";
+            container.appendChild(scissorsClone);
+            break;
+        case "Rock":
+            const rockClone = rock.cloneNode(true);
+            rockClone.style.display = "block";
+            container.appendChild(rockClone);
+            break;
+        default:
+            // do nothing;
+            break;
+    }
+
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 
