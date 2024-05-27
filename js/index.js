@@ -14,11 +14,8 @@ let container = document.querySelector(".rps-container");
 container.addEventListener("click", (event) => {
     let target = event.target;
 
-    switch(target.id){
-        case "paper":
-            alert(`Paper was clicked`);
-            break;
-        }
+    alert(`${String(target.id).toUpperCase()} was clicked`);
+
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 
