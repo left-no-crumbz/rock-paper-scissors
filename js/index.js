@@ -10,66 +10,36 @@ let getComputerChoice = () => {
     }
 };
 
-let container = document.querySelector(".rps-container");
+let container = document.querySelector(".buttons");
 container.addEventListener("click", (event) => {
     const target = event.target;
 
-    // alert(`${String(target.id).toUpperCase()} was clicked`);
-    
-    let paper = document.querySelector("#paper");
-    paper.style.display = "none";
-
-    let scissors = document.querySelector("#scissors");
-    scissors.style.display = "none";
-
-
-    let rock = document.querySelector("#rock");
-    rock.style.display = "none";
-
+    const rpsContainer = document.querySelector(".rps-container")
+    const paper = document.querySelector("#paper");
+    const scissors = document.querySelector("#scissors");
+    const rock = document.querySelector("#rock");
+    const text = document.querySelector(".text");
 
     const body = document.querySelector("body");
 
-    // hide the container;
-    const resultDiv = document.createElement("div");
-    const strDiv = document.createElement("div");
-    
-    strDiv.style.display = "flex";
-    strDiv.style.margin = "2rem 0";
-    strDiv.style.gap = "20rem";
-    strDiv.style.justifyContent = "center";
-    strDiv.style.alignItems = "center";
-
-
-    const userStr = document.createElement("p");
-    const compStr = document.createElement("p");
-
-
-    userStr.textContent = "YOU CHOSE"
-    compStr.textContent = "THE HOUSE PICKED"
-
-
     switch(target.id){
         case "paper":
-            // container.style.display = "none";
-            container.appendChild(userStr);
-            container.appendChild(compStr);
-            paper.style.display = "flex";
-            // let paper = document.querySelector("#paper");
-            // container.appendChild(paper);
+            rpsContainer.style.backgroundImage = "none";
+            text.style.display = "flex";
+            scissors.style.display = "none";
+            rock.style.display = "none";
             break;
         case "scissors":
-            // container.style.display = "none";
-            strDiv.appendChild(userStr);
-            strDiv.appendChild(compStr);
-            let scissors = document.querySelector("#scissors");
-            container.appendChild(scissors);
+            rpsContainer.style.backgroundImage = "none";
+            text.style.display = "flex";
+            paper.style.display = "none";
+            rock.style.display = "none";
             break;
         case "rock":
-            // container.style.display = "none";
-            strDiv.appendChild(userStr);
-            strDiv.appendChild(compStr);
-            let rock = document.querySelector("#rock");
-            container.appendChild(rock);
+            rpsContainer.style.backgroundImage = "none";
+            text.style.display = "flex";
+            paper.style.display = "none";
+            scissors.style.display = "none";
             break;
     }
     body.appendChild(strDiv);
