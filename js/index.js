@@ -58,18 +58,24 @@ container.addEventListener("click", (event) => {
     switch(choice){
         case "Paper":
             const paperClone = paper.cloneNode(true);
-            paperClone.style.display = "block";
+            paperClone.style.display = "flex";
             container.appendChild(paperClone);
+            container.style.flexDirection = "row";
+            container.style.gap = "10rem";
             break;
         case "Scissors":
             const scissorsClone = scissors.cloneNode(true);
-            scissorsClone.style.display = "block";
+            scissorsClone.style.display = "flex";
             container.appendChild(scissorsClone);
+            container.style.flexDirection = "row";
+            container.style.gap = "10rem";
             break;
         case "Rock":
             const rockClone = rock.cloneNode(true);
-            rockClone.style.display = "block";
+            rockClone.style.display = "flex";
             container.appendChild(rockClone);
+            container.style.flexDirection = "row";
+            container.style.gap = "10rem";
             break;
         default:
             // do nothing;
