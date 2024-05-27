@@ -79,13 +79,39 @@ body {
     color: var(--dark-text);
 }
 
-.rps-container {
+
+.rps-container{
     margin: 4rem 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: image("../images/bg-triangle.svg");
-    gap: 2rem;
+    gap: 5rem;
+}
+
+.text {
+    display: flex;
+    display: none;
+    gap: 10rem;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.top {
+    display: flex;
+    gap: 5rem;
 }
 
 button {
@@ -112,8 +138,8 @@ button {
 .game.img-scissors#scissors,
 .game.img-rock#rock {
     background: white;
-    width: 10rem;
-    height: 10rem;
+    min-width: 10rem;
+    max-height: 10rem;
     padding: 50px;
     border-radius: 50%;
 }
