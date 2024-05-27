@@ -24,11 +24,7 @@ container.addEventListener("click", (event) => {
     const rock = document.querySelector("#rock");
     const text = document.querySelector(".text");
     const top = document.querySelector(".top");
-    let score = document.querySelector("#score");
-
-    console.log(score);
-    console.log(score.textContent);
-    // TODO: Implement game logic 
+    const score = document.querySelector("#score");
 
     function choose(choice) {
         switch(choice){
@@ -63,7 +59,6 @@ container.addEventListener("click", (event) => {
         
         }
     }
-
     const choice = getComputerChoice();
     switch(target.id){
         // disables the element to prevent spawning children
@@ -74,6 +69,7 @@ container.addEventListener("click", (event) => {
             rock.style.display = "none";
             paper.disabled = true;
             choose(choice);
+            decideWinner();
             break;
         case "scissors":
             rpsContainer.style.backgroundImage = "none";
@@ -82,6 +78,7 @@ container.addEventListener("click", (event) => {
             rock.style.display = "none";
             scissors.disabled = true;
             choose(choice);
+            decideWinner();
             break;
         case "rock":
             // fixes the awkward space when rock is chosen
@@ -94,24 +91,44 @@ container.addEventListener("click", (event) => {
             scissors.style.display = "none";
             rock.disabled = true;
             choose(choice);
+            decideWinner();
             break;
         default:
             // do nothing
             break;
     }
-    const upperHumanChoice = String(target.id).toLocaleUpperCase();
-    const upperComputerChoice = String(choice).toLocaleUpperCase();
-    let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
-    upperHumanChoice === "SCISSORS" && upperComputerChoice === "PAPER" ||
-    upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
 
-    let ctr = 0;
-    if(humanWinCondition) {
-        console.log(ctr);
-        ++ctr;
-        score.textContent = `${ctr}`;
+    function decideWinner(){
+        const resultDiv = document.createElement("div");
+        const resultParagraph = document.createElement("p");
+        const playAgain = document.createElement("button");
+    
+        resultDiv.appendChild(resultParagraph);
+        resultDiv.append(playAgain);
+        
+        resultParagraph.style.fontSize = "3rem";
+        resultParagraph.style.fontWeight = "700";
+    
+        playAgain.style.padding = "2rem 4rem";
+        playAgain.style.backgroundColor = "white";
+        const upperHumanChoice = String(target.id).toLocaleUpperCase();
+        const upperComputerChoice = String(choice).toLocaleUpperCase();
+        let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
+        upperHumanChoice === "SCISSORS" && upperComputerChoice === "PAPER" ||
+        upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
+    
+        let ctr = 0;
+        if(humanWinCondition) {
+            console.log(ctr);
+            ++ctr;
+            score.textContent = `${ctr}`;
+            resultParagraph.textContent = "YOU WIN";        
+        } else {
+            resultParagraph.textContent = "YOU LOSE";        
+        }
+        
+        container.insertBefore(resultDiv, container.lastChild);
     }
-
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
 
