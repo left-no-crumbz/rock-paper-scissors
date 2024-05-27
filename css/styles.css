@@ -95,13 +95,13 @@ body {
 .text {
     display: flex;
     display: none;
-    gap: 15.5rem;
-}
-
-.text {
+    justify-content: space-around;
+    gap: 38.5rem;
     font-weight: 600;
     font-size: 1.5rem;
 }
+
+
 
 .buttons {
     display: flex;
@@ -116,7 +116,9 @@ body {
     gap: 5rem;
 }
 
-button {
+#rock,
+#scissors,
+#paper {
     padding: 30px;
     border-radius: 100%;
     border: none;
