@@ -24,63 +24,71 @@ container.addEventListener("click", (event) => {
     const scissors = document.querySelector("#scissors");
     const rock = document.querySelector("#rock");
     const text = document.querySelector(".text");
+    const top = document.querySelector(".top");
+    function choose() {
+        const choice = getComputerChoice();
 
-    const body = document.querySelector("body");
-
+        console.log(`Human chose: ${target.id}`);
+        console.log(`Computer chose: ${choice}`);
+    
+        switch(choice){
+            case "Paper":
+                const paperClone = paper.cloneNode(true);
+                paperClone.style.display = "flex";
+                container.appendChild(paperClone);
+                container.style.flexDirection = "row";
+                container.style.gap = "10rem";
+                break;
+            case "Scissors":
+                const scissorsClone = scissors.cloneNode(true);
+                scissorsClone.style.display = "flex";
+                container.appendChild(scissorsClone);
+                container.style.flexDirection = "row";
+                container.style.gap = "10rem";
+                break;
+            case "Rock":
+                const rockClone = rock.cloneNode(true);
+                rockClone.style.display = "flex";
+                container.appendChild(rockClone);
+                container.style.flexDirection = "row";
+                container.style.gap = "10rem";
+                break;
+            default:
+                // do nothing;
+                break;
+        }
+    }
     switch(target.id){
         case "paper":
             rpsContainer.style.backgroundImage = "none";
             text.style.display = "flex";
             scissors.style.display = "none";
             rock.style.display = "none";
+            choose();
             break;
         case "scissors":
             rpsContainer.style.backgroundImage = "none";
             text.style.display = "flex";
             paper.style.display = "none";
             rock.style.display = "none";
+            choose();
             break;
         case "rock":
+            // fixes the awkward space when rock is chosen
+            // this is because I grouped paper and scissors together
+            top.style.display = "none";
+
             rpsContainer.style.backgroundImage = "none";
             text.style.display = "flex";
             paper.style.display = "none";
             scissors.style.display = "none";
+            choose();
             break;
         default:
             // do nothing
             break;
     }
-    const choice = getComputerChoice();
 
-    console.log(`Human chose: ${target.id}`);
-    console.log(`Computer chose: ${choice}`);
-
-    switch(choice){
-        case "Paper":
-            const paperClone = paper.cloneNode(true);
-            paperClone.style.display = "flex";
-            container.appendChild(paperClone);
-            container.style.flexDirection = "row";
-            container.style.gap = "10rem";
-            break;
-        case "Scissors":
-            const scissorsClone = scissors.cloneNode(true);
-            scissorsClone.style.display = "flex";
-            container.appendChild(scissorsClone);
-            container.style.flexDirection = "row";
-            container.style.gap = "10rem";
-            break;
-        case "Rock":
-            const rockClone = rock.cloneNode(true);
-            rockClone.style.display = "flex";
-            container.appendChild(rockClone);
-            container.style.flexDirection = "row";
-            container.style.gap = "10rem";
-            break;
-        default:
-            // do nothing;
-            break;
-    }
 
 });
 // let getHumanChoice = () => prompt("Please enter a choice: ");
