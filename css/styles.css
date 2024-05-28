@@ -33,9 +33,6 @@ input, button {
 }
 
 body {
-    /* display: flex;
-    flex-direction: column;
-    flex: 1; */
     font-family: "Barlow Semi Condensed", sans-serif;
     color: white;
     background: radial-gradient(at top, var(--bg-start-gradient), var(--bg-end-gradient));
@@ -100,7 +97,6 @@ body {
 
 .user-text,
 .computer-text {
-    /* display: flex; */
     display: none;
     justify-content: space-around;
     gap: 38.5rem;
