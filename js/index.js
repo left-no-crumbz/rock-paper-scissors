@@ -1,112 +1,122 @@
-// console.log("Hello World!");
+// REVAMP
 
+const rpsContainer = document.querySelector(".rps-container")
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const rock = document.querySelector("#rock");
+const score = document.querySelector("#score");
+const userText = document.querySelector(".user-text");
+const compText = document.querySelector(".computer-text");
 
-let getComputerChoice = () => {
-    const MAX = 4;
-    const MIN = 1;
-    const choice = Math.floor(Math.random() * (MAX - MIN) + MIN);
+const user = document.querySelector(".user");
+const computer = document.querySelector(".computer");
 
+const resultDiv = document.querySelector(".result");
+const resultsContainer = document.querySelector(".results-container");
+const resultText = document.querySelector("#result-text");
+const playAgainBtn = document.querySelector("#play-again");
 
-    switch(choice) {
-        case 1: return "Rock";
-        case 2: return "Paper";
-        case 3: return "Scissors";
+let userChoice;
+let computerChoice;
+
+const getComputerChoice = () => {
+    const choices = ["ROCK", "SCISSORS", "PAPER"];
+    return choices[Math.floor(Math.random() * choices.length)];
+}
+
+function decideWinner(userChoice, computerChoice){
+    const winConditions = {
+        ROCK: "SCISSORS",
+        SCISSORS: "PAPER",
+        PAPER: "ROCK"
+    };
+
+    let ctr = parseInt(score.textContent);
+    if (userChoice === computerChoice){
+        resultText.textContent = "DRAW";
+    } else if (winConditions[userChoice] === computerChoice) {
+        score.textContent = `${++ctr}`;
+        resultText.textContent = "YOU WIN";
+    } else {
+        resultText.textContent = "YOU LOSE";
     }
-};
+    user.appendChild(userText);
+    computer.appendChild(compText);
+}
 
-let container = document.querySelector(".buttons");
-container.addEventListener("click", (event) => {
-    const target = event.target;
-
-    const rpsContainer = document.querySelector(".rps-container")
-    const paper = document.querySelector("#paper");
-    const scissors = document.querySelector("#scissors");
-    const rock = document.querySelector("#rock");
-    const score = document.querySelector("#score");
-    const userText = document.querySelector(".user-text");
-    const compText = document.querySelector(".computer-text");
-    // const top = document.querySelector(".top");
-    const user = document.querySelector(".user");
-    const computer = document.querySelector(".computer");
-    const resultDiv = document.querySelector(".result");
-    function computerChoose(choice) {
-        userText.style.display = "flex";
-        compText.style.display = "flex";
-        let computerChoice;
-        switch(choice){
-            // disables the clone to prevent spawning children
-            case "Paper":
-                computerChoice = paper.cloneNode(true);
-                break;
-                case "Scissors":
-                computerChoice = scissors.cloneNode(true);
-                break;
-            case "Rock":
-                computerChoice = rock.cloneNode(true);
-                break;
-            default:
-                // do nothing;
-                break;
-            }
-        if (computerChoice){
-            computer.appendChild(computerChoice);
-            computerChoice.disabled = true;
-        }
+function handleUserChoice(choice){
+    // clone the user button choice
+    switch(choice){
+        case "PAPER":
+            userChoice = paper.cloneNode(true);
+            break;
+        case "SCISSORS":
+            userChoice = scissors.cloneNode(true);
+            break;
+        case "ROCK":
+            userChoice = rock.cloneNode(true);
+            break;
+        default:
+            // do nothing
+            break;
     }
+
+    const computerChoiceStr = getComputerChoice();
+    switch(computerChoiceStr){
+        case "PAPER":
+            computerChoice = paper.cloneNode(true);
+            break;
+        case "SCISSORS":
+            computerChoice = scissors.cloneNode(true);
+            break;
+        case "ROCK":
+            computerChoice = rock.cloneNode(true);
+            break;
+        default:
+            // do nothing
+    }
+
     
-    function userChoose(choice){
-        let userChoice;
-        switch(target.id){
-            case "paper":
-                rpsContainer.style.display = "none";
-                userChoice = paper.cloneNode(true);
-                computerChoose(choice);
-                decideWinner();
-                break;
-            case "scissors":
-                rpsContainer.style.display = "none";
-                userChoice = scissors.cloneNode(true);
-                computerChoose(choice);
-                decideWinner();
-                break;
-            case "rock":
-                rpsContainer.style.display = "none";
-                userChoice = rock.cloneNode(true);
-                computerChoose(choice);
-                decideWinner();
-                break;
-                default:
-                    // do nothing
-                break;
-        }
-        if(userChoice){
-            user.appendChild(userChoice);
-            // disables the element to prevent spawning children
-            userChoice.disabled = true;
-        }
-    }
-    function decideWinner(){
-        resultDiv.style.display = "flex";
-        const resultText = document.querySelector("#result-text");
-        const upperHumanChoice = String(target.id).toLocaleUpperCase();
-        const upperComputerChoice = String(choice).toLocaleUpperCase();
-        let humanWinCondition = (upperHumanChoice === "ROCK" && upperComputerChoice === "SCISSORS" ||
-        upperHumanChoice === "SCISSORS" && upperComputerChoice === "PAPER" ||
-        upperHumanChoice === "PAPER" && upperComputerChoice === "ROCK");
+    decideWinner(choice, computerChoiceStr);
     
-        let ctr = 0;
-        if(upperHumanChoice === upperComputerChoice) {
-            resultText.textContent = "DRAW";        
-        } else if (humanWinCondition){
-            console.log(ctr);
-            ++ctr;
-            score.textContent = `${ctr}`;
-            resultText.textContent = "YOU WIN";        
-        } else {
-            resultText.textContent = "YOU LOSE";        
-        }
-        
-    }
-    const choice = getComputerChoice();
-    userChoose(choice);
+    user.appendChild(userChoice);
+    computer.appendChild(computerChoice);
+    
+    rpsContainer.style.display = "none";
+    resultsContainer.style.display = "flex";
+    resultDiv.style.display = "flex";
+    userText.style.display = "flex";
+    compText.style.display = "flex";
+
+    userText.hidden = false;
+    compText.hidden = false;
+
+}
+
+function resetGame() {
+    rpsContainer.style.display = "flex";
+    resultsContainer.style.display = "none";
+    resultDiv.style.display = "none";
+    userText.hidden = true;
+    compText.hidden = true;
+
+    resultText.textContent = "";
+
+    console.log(user.innerHTML);
+    console.log(computer.innerHTML);
+
+    user.innerHTML = "";
+    computer.innerHTML = "";
+
+    userChoice = null;
+    computerChoice = null;
+}
+
+// Event listeners for user choices
+document.querySelectorAll(".buttons button").forEach((button) => {
+    button.addEventListener("click", () => {
+        handleUserChoice(String(button.id).toLocaleUpperCase());
+    });
 });
+
+playAgainBtn.addEventListener("click", resetGame);
