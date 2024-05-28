@@ -1,10 +1,11 @@
-// REVAMP
-
 const rpsContainer = document.querySelector(".rps-container")
+
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const rock = document.querySelector("#rock");
+
 const score = document.querySelector("#score");
+
 const userText = document.querySelector(".user-text");
 const compText = document.querySelector(".computer-text");
 
@@ -74,9 +75,9 @@ function handleUserChoice(choice){
             break;
         default:
             // do nothing
+            break;
     }
 
-    
     decideWinner(choice, computerChoiceStr);
     
     user.appendChild(userChoice);
