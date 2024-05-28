@@ -33,12 +33,18 @@ input, button {
 }
 
 body {
+    /* display: flex;
+    flex-direction: column;
+    flex: 1; */
     font-family: "Barlow Semi Condensed", sans-serif;
     color: white;
     background: radial-gradient(at top, var(--bg-start-gradient), var(--bg-end-gradient));
-    min-height: 100dvh;
+    min-height: 100svh;
 }
-.attribution { font-size: 11px; text-align: center; }
+.attribution { 
+    font-size: 11px; 
+    text-align: center;
+}
 .attribution a { color: hsl(228, 45%, 44%); }
 
 .container{
@@ -121,12 +127,13 @@ body {
 #scissors,
 #paper {
     padding: 30px;
-    border-radius: 100%;
+    border-radius: 50%;
     border: none;
     outline: none;
     background: none;
     cursor: pointer;
 }
+
 
 #paper {
     background: radial-gradient(at center, var(--paper-clr-start), var(--paper-clr-end));
@@ -143,10 +150,8 @@ body {
 .game.img-scissors#scissors,
 .game.img-rock#rock {
     background: white;
-    min-width: 10rem;
-    max-height: 10rem;
-    padding: 50px;
-    border-radius: 50%;
+    min-width: 8rem;
+    max-height: 8rem;
 }
 
 
@@ -179,12 +184,18 @@ body {
 #result-text {
     font-size: 4rem;
     font-weight: 600;
+    text-align: center;
 }
 
 #play-again {
-    padding: 8px 64px;
+    padding: 10px 64px;
     color: var(--dark-text);
     border: 0;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
+}
+
+#play-again:hover {
+    color:red;
 }
