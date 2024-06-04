@@ -32,7 +32,7 @@ function decideWinner(userChoice, computerChoice){
         PAPER: "ROCK"
     };
 
-    let ctr = parseInt(score.textContent);
+    let ctr = Number.parseInt(score.textContent);
     if (userChoice === computerChoice){
         resultText.textContent = "DRAW";
     } else if (winConditions[userChoice] === computerChoice) {
@@ -113,11 +113,17 @@ function resetGame() {
     computerChoice = null;
 }
 
-// Event listeners for user choices
-document.querySelectorAll(".buttons button").forEach((button) => {
+
+for (const button of document.querySelectorAll(".buttons button")) {
     button.addEventListener("click", () => {
         handleUserChoice(String(button.id).toLocaleUpperCase());
     });
-});
+}
+
+// document.querySelectorAll(".buttons button").forEach((button) => {
+//     button.addEventListener("click", () => {
+//         handleUserChoice(String(button.id).toLocaleUpperCase());
+//     });
+// });
 
 playAgainBtn.addEventListener("click", resetGame);
